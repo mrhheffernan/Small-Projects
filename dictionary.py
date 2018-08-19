@@ -6,6 +6,10 @@ def define(obj):
     obj = obj.lower() # Takes care of case sensitivity
     if obj in data:
         return data[obj]
+    elif obj.title() in data:
+        return data[obj.title()]
+    elif obj.upper() in data:
+        return data[obj.upper()]
     else:
         guesses = gcm(obj,data.keys())
         if not len(guesses) == 0:
@@ -26,7 +30,7 @@ def define(obj):
 
         return "The word you entered, %s, is not in this dictionary. Try again." % obj
 
-word = input("Enter a word:",)
+word = input("Enter a word: ",)
 definition = define(word)
 
 if type(definition)==list:
